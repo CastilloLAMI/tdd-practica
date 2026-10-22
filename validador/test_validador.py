@@ -33,6 +33,28 @@ class TestValidarPassword(unittest.TestCase):
         self.assertFalse(res["valida"])
         self.assertIn("Al menos un carácter especial", res["errores"])
 
+    def test_password_valida_completa(self):
+        res = validar_password("Segura1!abc")
+        self.assertTrue(res["valida"])
+        self.assertEqual(res["errores"], [])
+
+    def test_multiples_errores(self):
+        res = validar_password("abc")
+        self.assertFalse(res["valida"])
+        self.assertTrue(len(res["errores"]) >= 3)
+
+    def test_varios_passwords_con_subTest(self):
+        casos = [
+            ("Abc1!xyz", True),
+            ("abc", False),
+            ("ABCDEFGH", False),
+            ("Abcdefgh1!", True),
+        ]
+        for pwd, esperado in casos:
+            with self.subTest(pwd=pwd):
+                res = validar_password(pwd)
+                self.assertEqual(res["valida"], esperado)
+
 
 if __name__ == '__main__':
     unittest.main()
