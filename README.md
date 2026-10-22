@@ -186,7 +186,7 @@ Para vincular este repositorio local a GitHub y enviarlo:
 2. Ejecutar los siguientes comandos en la terminal dentro de `tdd-practica`:
 
 ```bash
-git remote add origin https://github.com/<TU_USUARIO>/tdd-practica.git
+git remote add origin https://github.com/CastilloLAMI/tdd-practica.git
 git branch -M main
 git push -u origin main
 ```
