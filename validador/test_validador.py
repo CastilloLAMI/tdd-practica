@@ -28,6 +28,11 @@ class TestValidarPassword(unittest.TestCase):
         self.assertFalse(res["valida"])
         self.assertIn("Al menos un dígito", res["errores"])
 
+    def test_sin_caracter_especial(self):
+        res = validar_password("Abcdefg1")
+        self.assertFalse(res["valida"])
+        self.assertIn("Al menos un carácter especial", res["errores"])
+
 
 if __name__ == '__main__':
     unittest.main()
